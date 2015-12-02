@@ -29,7 +29,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
         etRepeatPassword = (EditText) findViewById(R.id.etRepeatPassword);
-
         btRegister = (Button) findViewById(R.id.btRegister);
 
         btRegister.setOnClickListener(this);
@@ -37,12 +36,27 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        String tempPass = etPassword.getText().toString();
+        String tempRepeatPass = etRepeatPassword.getText().toString();
+        String tempName = etName.getText().toString();
+        String tempAge = etAge.getText().toString();
+        String tempUser = etUsername.getText().toString();
+
         switch (v.getId()) {
             case R.id.btRegister:
-                insertData();
-                Toast toast = Toast.makeText(this, "Data has been inserted", Toast.LENGTH_SHORT);
-                toast.show();
-                Log.v("APPLOG", "button pressed");
+                //If password Matches AND all fields are filled
+                if(tempPass.equals(tempRepeatPass) && !tempName.equals("") && !tempAge.equals("") && !tempUser.equals("")){
+                    insertData();
+                    makeToasts("Your data has been inserted correctly");
+                    //TODO launch the main menu?
+                } else if (!tempPass.equals(tempRepeatPass))
+                //If password doesnt matches
+                {
+                    makeToasts("Your password doesnt match");
+                } else {
+                    //One ore more Textfields are empty
+                    makeToasts("Please make sure all the fields are properly filled");
+                }
                 break;
         }
     }
@@ -52,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         // Gets the data repository in write mode
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
+        //Create temporal variables to retrieve UI elements values
         String tempName = etName.getText().toString();
         String tempAge = etAge.getText().toString();
         String tempUser = etUsername.getText().toString();
@@ -67,11 +82,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
-        newRowId = db.insert(
-                userContract.userEntry.TABLE_NAME,
-                null,
-                values);
+        newRowId = db.insert(userContract.userEntry.TABLE_NAME, null, values);
+
+        //Use for debugging purposes
         Log.v("APPLOG", "DATA HAS BEEN INSERTED");
     }
 
+    //Helper function to create toasts on the fly
+    public void makeToasts(String message) {
+        Toast toast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+        toast.show();
+    }
 }
