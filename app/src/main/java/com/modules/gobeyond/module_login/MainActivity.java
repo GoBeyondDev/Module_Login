@@ -46,24 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void insertData(){
-        // Gets the data repository in write mode
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(userContract.userEntry.COLUMN_NAME_ENTRY_ID, "11111");
-        values.put(userContract.userEntry.COLUMN_NAME_NAME, "gerardo");
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insert(
-                userContract.userEntry.TABLE_NAME,
-                null,
-                values);
-        Log.v("APPLOG", "DATA HAS BEEN INSERTED");
-    }
-
     public Cursor readData() {
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
