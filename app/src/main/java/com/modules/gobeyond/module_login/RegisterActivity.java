@@ -2,11 +2,9 @@ package com.modules.gobeyond.module_login;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +14,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     Button btRegister;
     EditText etName, etAge, etUsername, etPassword, etRepeatPassword;
+
     //Creates an instance of the DBHelper to be used to insert the data.
     public userDbHelper mDbHelper = new userDbHelper(this);
 
@@ -45,17 +44,21 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.btRegister:
                 //If password Matches AND all fields are filled
-                if(tempPass.equals(tempRepeatPass) && !tempName.equals("") && !tempAge.equals("") && !tempUser.equals("")){
+                if(tempPass.equals(tempRepeatPass) &&
+                    !tempName.equals("") &&
+                    !tempAge.equals("") &&
+                    !tempUser.equals(""))
+                {
                     insertData();
                     makeToasts("Your data has been inserted correctly");
                     //TODO launch the main menu?
                 } else if (!tempPass.equals(tempRepeatPass))
-                //If password doesnt matches
+                //If password doesn't match
                 {
-                    makeToasts("Your password doesnt match");
+                    makeToasts("Your password doesn't match.");
                 } else {
                     //One ore more Textfields are empty
-                    makeToasts("Please make sure all the fields are properly filled");
+                    makeToasts("Please make sure all the fields are properly filled.");
                 }
                 break;
         }
@@ -85,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         newRowId = db.insert(userContract.userEntry.TABLE_NAME, null, values);
 
         //Use for debugging purposes
-        Log.v("APPLOG", "DATA HAS BEEN INSERTED");
+        Log.v("APPLOG", "DATA HAS BEEN INSERTED - newRowId: " + newRowId);
     }
 
     //Helper function to create toasts on the fly
