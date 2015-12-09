@@ -25,6 +25,17 @@
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
+        <activity android:name=".new_case_activity" >
+        </activity>
+        <activity android:name=".home_activity" >
+        </activity>
+        <activity android:name=".case_list_activity" >
+        </activity>
+        <activity
+            android:name=".case_detail_activity"
+            android:label="@string/title_activity_case_detail_activity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

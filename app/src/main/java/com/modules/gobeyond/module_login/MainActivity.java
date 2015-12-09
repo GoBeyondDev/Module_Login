@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText etAge;
     EditText etUsername;
 
-    public DbHelper mDbHelper;
+    public userDbHelper mDbHelper = new userDbHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +41,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             DbHelper.SQL_CREATE_TABLES = getStringFromFile(R.raw.mb_app_dbstructure);
             Log.d(Global.APP_NAME, "SQL file to create the DB \""
                     + DbHelper.DATABASE_NAME + "\" tables was just fetched.");
-        }
         catch (Exception e) {
             Log.e(Global.APP_NAME,
                 "getStringFromFile(R.raw.mb_app_dbstructure) - Error: " + e.getMessage());
         }
 
-//        Cursor c = readData();
-//        Log.d(Global.APP_NAME, "Cursor c = " + c);
-
     }
 
     public Cursor readData() {
-        mDbHelper = new DbHelper(this);
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
         // Define a projection that specifies which columns from the database
