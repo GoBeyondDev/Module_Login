@@ -35,9 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btLogout.setOnClickListener(this);
 
-        //insertData();
-
-        Cursor c = readData();
+       Cursor c = readData();
         c.moveToFirst();
         do{
             Log.v("APPLOG" , c.getString(1));

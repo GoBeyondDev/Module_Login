@@ -14,4 +14,7 @@
     <string name="text_register">Register</string>
     <string name="text_logout">Logout</string>
     <string name="text_register_here">Register Here</string>
+    <string name="title_activity_home">homeActivity</string>
+    <string name="title_activity_case_detail_activity">case_detail_activity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
