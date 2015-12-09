@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="db_version">1</string>
+    <string name="db_name">MPApp</string>
+
+    //Table for Users
+    <string name="tb_users">TB_USERS</string>
+    <string name="col_users_username">username</string>
+    <string name="col_users_password">password</string>
+    <string name="col_users_fullname">fullname</string>
+    <string name="col_users_age">age</string>
+
+    //Table for Cases
+    <string name="tb_cases">TB_CASES</string>
+    <string name="col_cases_id">id_number</string>
+    <string name="col_cases_name">name_title</string>
+    <string name="col_cases_date">date</string>
+    <string name="col_cases_time">time</string>
+    <string name="col_cases_geolocation">geolocation</string>
+    <string name="col_cases_officer_assigned">officer_assigned</string>
+
+    //Table for Persons (involved in a case)
+    <string name="tb_persons">TB_PERSONS</string>
+    <string name="col_persons_first_name">first_name</string>
+    <string name="col_persons_last_name">last_name</string>
+    <string name="col_persons_gender">gender</string>
+    <string name="col_persons_race">race</string>
+    <string name="col_persons_id">id</string>
+    <string name="col_persons_id_type">id_type</string>
+    <string name="col_persons_id_address">id_address</string>
+    <string name="col_persons_person_type">person_type</string>
+    <string name="col_persons_notes">notes</string>
+
+    //Table to relate (zero or more) Cases to (zero or more) Persons
+    <string name="tb_cases_persons">TB_CASES_PERSONS</string>
+    <string name="col_cases_persons_case_id">case_id</string>
+    <string name="col_cases_persons_person_id">person_id</string>
+
+    //Table with the types of Persons involved in a case:
+    //suspect, witness, victim, informant, intelligence, staff
+    <string name="tb_person_type">TB_PERSON_TYPE</string>
+    <string name="col_person_type_id">id</string>
+    <string name="col_person_type_name">name</string>
+
+    //Table with the types of person ids: Passport, NRIC, OCR, etc.
+    <string name="tb_id_type">TB_ID_TYPE</string>
+    <string name="col_id_type_id">id</string>
+    <string name="col_id_type_name">name</string>
+
+    //Table for Statements
+    <string name="tb_statements">TB_STATEMENTS</string>
+    <string name="col_statements_id">id</string>
+    <string name="col_statements_case_id">case_id</string>
+    <string name="col_statements_notes">notes</string>
+
+    //Table for IO Log-sheets
+    <string name="tb_io_logsheet">TB_IO_LOGSHEET</string>
+    <string name="col_io_logsheet_id">id</string>
+    <string name="col_io_logsheet_case_id">case_id</string>
+    <string name="col_io_logsheet_datetime">datetime</string>
+    <string name="col_io_logsheet_starttime">starttime</string>
+    <string name="col_io_logsheet_notes">notes</string>
+
+    //Table for Exhibits
+    <string name="tb_exhibits">TB_EXHIBITS</string>
+    <string name="col_exhibits_id">id</string>
+    <string name="col_exhibits_case_id">case_id</string>
+    <string name="col_exhibits_name">name</string>
+    <string name="col_exhibits_location">location</string>
+    <string name="col_exhibits_notes">notes</string>
+
+    //Table for all Multimedia files (pictures, audio, video)
+    //related to a case, exhibit, statement, etc.
+    <string name="tb_multimedia">TB_MULTIMEDIA</string>
+    <string name="col_multimedia_fullpath">fullpath</string>
+    <string name="col_multimedia_type">type</string>
+    <string name="col_multimedia_owner_table">owner_table</string>
+    <string name="col_multimedia_owner_id">owner_id</string>
+
+</resources>
