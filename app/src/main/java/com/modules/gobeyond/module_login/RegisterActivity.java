@@ -16,7 +16,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     EditText etName, etAge, etUsername, etPassword, etRepeatPassword;
 
     //Creates an instance of the DBHelper to be used to insert the data.
-    public userDbHelper mDbHelper = new userDbHelper(this);
+    public DbHelper mDbHelper = new DbHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,18 +77,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(userContract.userEntry.COLUMN_NAME_ENTRY_ID, "11111");
-        values.put(userContract.userEntry.COLUMN_NAME_NAME, tempName);
-        values.put(userContract.userEntry.COLUMN_NAME_AGE, tempAge);
-        values.put(userContract.userEntry.COLUMN_NAME_USERNAME, tempUser);
-        values.put(userContract.userEntry.COLUMN_NAME_PASSWORD, tempPass);
+        values.put(Global.getContext().getString(R.string.col_users_fullname), tempName);
+        values.put(Global.getContext().getString(R.string.col_users_age), tempAge);
+        values.put(Global.getContext().getString(R.string.col_users_username), tempUser);
+        values.put(Global.getContext().getString(R.string.col_users_password), tempPass);
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
-        newRowId = db.insert(userContract.userEntry.TABLE_NAME, null, values);
+        newRowId = db.insert(Global.getContext().getString(R.string.tb_users), null, values);
 
         //Use for debugging purposes
-        Log.v("APPLOG", "DATA HAS BEEN INSERTED - newRowId: " + newRowId);
+        Log.d(Global.APP_NAME, "DATA HAS BEEN INSERTED - newRowId: " + newRowId);
     }
 
     //Helper function to create toasts on the fly

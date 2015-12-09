@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="db_version">1</string>
-    <string name="db_name">MPApp</string>
+    <string name="db_name">MPApp.db</string>
 
     //Table for Users
     <string name="tb_users">TB_USERS</string>
